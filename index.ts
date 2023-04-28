@@ -1,0 +1,23 @@
+import { Endian } from "./Endian";
+import { IReader } from "./readers/IReader";
+import { IWriter } from "./writers/IWriter";
+import { ReaderBE } from "./readers/ReaderBE";
+import { ReaderLE } from "./readers/ReaderLE";
+import { WriterBE } from "./writers/WriterBE";
+import { WriterLE } from "./writers/WriterLE";
+
+export function createReader(endianness:Endian, buffer:Buffer) : IReader {
+	if (endianness === Endian.LE) {
+		return new ReaderLE(buffer);
+	} else {
+		return new ReaderBE(buffer);
+	}
+}
+
+export function createWriter(endianness:Endian, size?:number) : IWriter {
+	if (endianness === Endian.LE) {
+		return new WriterLE(size);
+	} else {
+		return new WriterBE(size);
+	}
+}
