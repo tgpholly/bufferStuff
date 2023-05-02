@@ -14,6 +14,7 @@ export interface IWriter {
 	writeULong(value:number): IWriter,
 	writeFloat(value:number): IWriter,
 	writeDouble(value:number): IWriter,
+	writeShortString(text:string): IWriter,
 	writeString(text:string): IWriter,
-	writeShortString(text:string): IWriter
+	writeString16(text:string): IWriter,
 }

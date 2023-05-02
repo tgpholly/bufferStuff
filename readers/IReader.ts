@@ -14,4 +14,5 @@ export interface IReader {
 	readDouble(): number,
 	readShortString(): string,
 	readString(): string,
+	readString16(): string,
 }
