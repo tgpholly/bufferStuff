@@ -10,7 +10,7 @@ export interface IWriter {
 	writeUShort(value:number): IWriter,
 	writeInt(value:number): IWriter,
 	writeUInt(value:number): IWriter,
-	writeLong(value:number): IWriter,
+	writeLong(value:number|bigint): IWriter,
 	writeULong(value:number): IWriter,
 	writeFloat(value:number): IWriter,
 	writeDouble(value:number): IWriter,
