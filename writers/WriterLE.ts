@@ -132,4 +132,14 @@ export class WriterLE extends WriterBase implements IWriter {
 
 		return this;
 	}
+
+	public writeString16(text:string) {
+		this.writeUShort(text.length);
+
+		for (let i = 0; i < text.length; i++) {
+			this.writeUShort(text.charCodeAt(i));
+		}
+
+		return this;
+	}
 }

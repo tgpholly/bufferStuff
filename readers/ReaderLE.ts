@@ -71,4 +71,15 @@ export class ReaderLE extends ReaderBase implements IReader {
 
 		return text;
 	}
+	
+	public readString16() {
+		const length = this.readUShort();
+		let text:string = "";
+
+		for (let i = 0; i < length; i++) {
+			text += String.fromCharCode(this.readUShort());
+		}
+
+		return text;
+	}
 }
