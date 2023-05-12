@@ -5,7 +5,6 @@
 	"main": "index.ts",
 	"scripts": {
 		"updateCheck": "check-outdated",
-		"pack": "webpack",
 		"build": "tsc --build",
 		"_clean": "tsc --build --clean"
 	},
