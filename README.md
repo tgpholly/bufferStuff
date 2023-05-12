@@ -1,4 +1,4 @@
-# bufferStuff &nbsp; [![CodeFactor](https://www.codefactor.io/repository/github/tgpholly/bufferstuff/badge)](https://www.codefactor.io/repository/github/tgpholly/bufferstuff)
+# bufferStuff &nbsp; [![CodeFactor](https://www.codefactor.io/repository/github/tgpholly/bufferstuff/badge)](https://www.codefactor.io/repository/github/tgpholly/bufferstuff) &nbsp; [![Node.js CI](https://github.com/tgpholly/bufferStuff/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/tgpholly/bufferStuff/actions/workflows/node.js.yml)
 A set of utility classes for reading and writing binary data in NodeJS.
 
 ## Motivations
