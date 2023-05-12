@@ -1,5 +1,5 @@
 # bufferStuff &nbsp; [![CodeFactor](https://www.codefactor.io/repository/github/tgpholly/bufferstuff/badge)](https://www.codefactor.io/repository/github/tgpholly/bufferstuff)
-A set of utility classes for reading and writing binary data in NodeJS and the browser.
+A set of utility classes for reading and writing binary data in NodeJS.
 
 ## Motivations
 I tend to write code a lot that needs to read and write from buffers ***and*** this is sometimes in big-endian too, so I decided eventually to make a utility to help me with that which is what you see here.
