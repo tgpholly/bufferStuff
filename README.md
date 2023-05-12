@@ -23,3 +23,11 @@ writer.writeByte(<number>);
 ```
 
 You can find a list of all of the methods for [Writers](https://github.com/tgpholly/bufferStuff/blob/master/writers/IWriter.ts) and [Readers](https://github.com/tgpholly/bufferStuff/blob/master/readers/IReader.ts) in their interface files.
+
+## Projects using bufferStuff
+If your project uses bufferStuff feel free to make a PR to add it to this list!
+### [tgpholly/mc-beta-server](https://github.com/tgpholly/mc-beta-server)
+### [tgpholly/ultrakillMP_server](https://github.com/tgpholly/ultrakillMP_server)
+
+## Projects similar to bufferStuff
+### [tgpholly/csharp-extensions/BinaryTools](https://github.com/tgpholly/csharp-extensions/tree/master/BinaryTools) - Basically bufferStuff but for C#
