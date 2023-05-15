@@ -1,3 +1,9 @@
+.github/*
+enums/*
+index.ts
+readers/*
+writers/*
+
 # Logs
 logs
 *.log
