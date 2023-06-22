@@ -4,6 +4,8 @@ index.ts
 combined.ts
 readers/*
 writers/*
+tooling/*
+tsconfig.json
 
 # Logs
 logs

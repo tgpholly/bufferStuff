@@ -2,7 +2,7 @@
 // for when you're just too lazy to
 // do it properly.
 
-import { readdirSync, statSync, readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
+import { readdirSync, statSync, readFileSync, writeFileSync } from "fs";
 
 let tsFileData:Array<string> = new Array<string>();
 
