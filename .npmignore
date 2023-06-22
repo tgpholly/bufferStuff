@@ -1,6 +1,7 @@
 .github/*
 enums/*
 index.ts
+combined.ts
 readers/*
 writers/*
 

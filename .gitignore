@@ -1,5 +1,6 @@
 # Build folder
 lib/
+combined.ts
 
 # Logs
 logs
