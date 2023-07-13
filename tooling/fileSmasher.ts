@@ -4,7 +4,7 @@
 
 import { readdirSync, statSync, readFileSync, writeFileSync } from "fs";
 
-let tsFileData:Array<string> = new Array<string>();
+const tsFileData:Array<string> = new Array<string>();
 
 function readDir(nam:string) {
 	const files = readdirSync(nam);
