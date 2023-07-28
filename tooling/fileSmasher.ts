@@ -6,6 +6,7 @@ import { readdirSync, lstatSync, readFileSync, writeFileSync } from "fs";
 
 const tsFileData:Array<string> = new Array<string>();
 
+// Github Actions forced my hand
 const toolinglessFolderPath = __dirname.replace("/tooling", "/");
 
 function readDir(nam:string) {
@@ -14,11 +15,7 @@ function readDir(nam:string) {
 		if (nam == toolinglessFolderPath && (file.startsWith(".") || file == "tooling" || file == "lib" || file == "node_modules" || file == "combined.ts")) {
 			continue;
 		}
-
-		console.log(file);
 		
-		// This is a very dumb way of checking for folders
-		// protip: don't do this.
 		if (lstatSync(`${nam}/${file}`).isDirectory()) {
 			readDir(`${nam}/${file}`);
 		} else if (file.endsWith(".ts")) {
@@ -64,11 +61,6 @@ for (const line of splitLines) {
 	}
 	// Fix up classes, interfaces and such.
 	resultLines.push(checkForMatchAndReplace(line));
-	//resultLines.push(line.replace("export class", "class").replace("export interface", "interface").replace("export enum", "enum"));
 }
 
-// Investigation
-const finalOutput = resultLines.join("\n");
-console.log(finalOutput);
-console.log(toolinglessFolderPath);
-writeFileSync("./combined.ts", finalOutput);
+writeFileSync("./combined.ts", resultLines.join("\n"));
