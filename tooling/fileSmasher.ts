@@ -63,4 +63,6 @@ for (const line of splitLines) {
 	//resultLines.push(line.replace("export class", "class").replace("export interface", "interface").replace("export enum", "enum"));
 }
 
-writeFileSync("./combined.ts", resultLines.join("\n"));
+const finalOutput = resultLines.join("\n");
+console.log(finalOutput);
+writeFileSync("./combined.ts", finalOutput);
