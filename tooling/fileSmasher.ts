@@ -6,10 +6,12 @@ import { readdirSync, statSync, readFileSync, writeFileSync } from "fs";
 
 const tsFileData:Array<string> = new Array<string>();
 
+const toolinglessFolderPath = __dirname.replace("/tooling", "/");
+
 function readDir(nam:string) {
 	const files = readdirSync(nam);
 	for (const file of files) {
-		if (nam == "./" && (file.startsWith(".") || file == "tooling" || file == "lib" || file == "node_modules" || file == "combined.ts")) {
+		if (nam == toolinglessFolderPath && (file.startsWith(".") || file == "tooling" || file == "lib" || file == "node_modules" || file == "combined.ts")) {
 			continue;
 		}
 
@@ -23,7 +25,7 @@ function readDir(nam:string) {
 	}
 }
 
-readDir("./");
+readDir(toolinglessFolderPath);
 
 const combinedFiles = tsFileData.join("\n");
 
@@ -66,5 +68,5 @@ for (const line of splitLines) {
 // Investigation
 const finalOutput = resultLines.join("\n");
 console.log(finalOutput);
-console.log(__dirname);
+console.log(toolinglessFolderPath);
 writeFileSync("./combined.ts", finalOutput);
