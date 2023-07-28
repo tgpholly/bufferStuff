@@ -1,5 +1,5 @@
 import { IWriter } from "./IWriter";
-import { WriterBase } from "./WriterBase";
+import { WriterBase } from "../base/WriterBase";
 
 export class WriterBE extends WriterBase implements IWriter {
 	public writeShort(value:number) {

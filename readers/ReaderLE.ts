@@ -1,5 +1,5 @@
 import { IReader } from "./IReader";
-import { ReaderBase } from "./ReaderBase";
+import { ReaderBase } from "../base/ReaderBase";
 
 export class ReaderLE extends ReaderBase implements IReader {
 	public readShort() {
