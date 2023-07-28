@@ -15,6 +15,8 @@ function readDir(nam:string) {
 			continue;
 		}
 
+		console.log(file);
+		
 		// This is a very dumb way of checking for folders
 		// protip: don't do this.
 		if (statSync(`${nam}/${file}`).size == 0) {
