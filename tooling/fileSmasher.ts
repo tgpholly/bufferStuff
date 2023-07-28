@@ -19,7 +19,7 @@ function readDir(nam:string) {
 		
 		// This is a very dumb way of checking for folders
 		// protip: don't do this.
-		if (statSync(`${nam}/${file}`).isDirectory()) {
+		if (lstatSync(`${nam}/${file}`).isDirectory()) {
 			readDir(`${nam}/${file}`);
 		} else if (file.endsWith(".ts")) {
 			tsFileData.push(readFileSync((`${nam}/${file}`).replace("//", "/")).toString());
