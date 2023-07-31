@@ -12,7 +12,7 @@ const toolinglessFolderPath = __dirname.replace("/tooling", "/");
 function readDir(nam:string) {
 	const files = readdirSync(nam);
 	for (const file of files) {
-		if (nam == toolinglessFolderPath && (file.startsWith(".") || file == "tooling" || file == "lib" || file == "node_modules" || file == "combined.ts")) {
+		if (nam == toolinglessFolderPath && (file.startsWith(".") || file == "tooling" || file == "lib" || file == "web" || file == "node_modules" || file == "combined.ts")) {
 			continue;
 		}
 		
