@@ -63,7 +63,11 @@ for (const line of splitLines) {
 		continue;
 	}
 	// Fix up classes, interfaces and such.
-	resultLines.push(checkForMatchAndReplace(line));
+	if (process.argv[2] === "forweb") {
+		resultLines.push(line.replace("export class", "class").replace("export function", "function").replace("export enum", "enum").replace("export interface", "interface"));
+	} else {
+		resultLines.push(checkForMatchAndReplace(line));
+	}
 }
 
 writeFileSync("./combined.ts", resultLines.join("\n"));

@@ -1,13 +1,15 @@
 // Copyright (c) Holly Stubbs (tgpholly) - Licensed under MIT
 // Check LICENSE in repository root for more information.
 
+import { getBufferClass } from "./BufferShim";
+
 export class WriterBase {
 	public buffer:Buffer;
 	public offset:number;
 	public readonly resizable:boolean;
 
 	public constructor(size:number = 0) {
-		this.buffer = Buffer.alloc(size);
+		this.buffer = getBufferClass().alloc(size);
 		this.offset = 0;
 		this.resizable = size === 0;
 	}
