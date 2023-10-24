@@ -1,3 +1,6 @@
+// Copyright (c) Holly Stubbs (tgpholly) - Licensed under MIT
+// Check LICENSE in repository root for more information.
+
 import { IReader } from "./IReader";
 import { ReaderBase } from "../base/ReaderBase";
 

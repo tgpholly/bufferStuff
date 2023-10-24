@@ -1,3 +1,6 @@
+// Copyright (c) Holly Stubbs (tgpholly) - Licensed under MIT
+// Check LICENSE in repository root for more information.
+
 import { IWriter } from "./IWriter";
 import { WriterBase } from "../base/WriterBase";
 
