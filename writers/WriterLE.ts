@@ -3,11 +3,12 @@
 
 import { IWriter } from "./IWriter";
 import { WriterBase } from "../base/WriterBase";
+import { getBufferClass } from "../base/BufferShim";
 
 export class WriterLE extends WriterBase implements IWriter {
 	public writeShort(value:number) {
 		if (this.resizable) {
-			const buffer = Buffer.alloc(2);
+			const buffer = getBufferClass().alloc(2);
 			buffer.writeInt16LE(value);
 			this.writeBuffer(buffer);
 		} else {
@@ -20,7 +21,7 @@ export class WriterLE extends WriterBase implements IWriter {
 
 	public writeUShort(value:number) {
 		if (this.resizable) {
-			const buffer = Buffer.alloc(2);
+			const buffer = getBufferClass().alloc(2);
 			buffer.writeUInt16LE(value);
 			this.writeBuffer(buffer);
 		} else {
@@ -33,7 +34,7 @@ export class WriterLE extends WriterBase implements IWriter {
 
 	public writeInt(value:number) {
 		if (this.resizable) {
-			const buffer = Buffer.alloc(4);
+			const buffer = getBufferClass().alloc(4);
 			buffer.writeInt32LE(value);
 			this.writeBuffer(buffer);
 		} else {
@@ -45,7 +46,7 @@ export class WriterLE extends WriterBase implements IWriter {
 	}
 	public writeUInt(value:number) {
 		if (this.resizable) {
-			const buffer = Buffer.alloc(4);
+			const buffer = getBufferClass().alloc(4);
 			buffer.writeUInt32LE(value);
 			this.writeBuffer(buffer);
 		} else {
@@ -62,7 +63,7 @@ export class WriterLE extends WriterBase implements IWriter {
 		}
 
 		if (this.resizable) {
-			const buffer = Buffer.alloc(8);
+			const buffer = getBufferClass().alloc(8);
 			buffer.writeBigInt64LE(value);
 			this.writeBuffer(buffer);
 		} else {
@@ -79,7 +80,7 @@ export class WriterLE extends WriterBase implements IWriter {
 		}
 
 		if (this.resizable) {
-			const buffer = Buffer.alloc(8);
+			const buffer = getBufferClass().alloc(8);
 			buffer.writeBigUint64LE(value);
 			this.writeBuffer(buffer);
 		} else {
@@ -92,7 +93,7 @@ export class WriterLE extends WriterBase implements IWriter {
 
 	public writeFloat(value:number) {
 		if (this.resizable) {
-			const buffer = Buffer.alloc(4);
+			const buffer = getBufferClass().alloc(4);
 			buffer.writeFloatLE(value);
 			this.writeBuffer(buffer);
 		} else {
@@ -105,7 +106,7 @@ export class WriterLE extends WriterBase implements IWriter {
 
 	public writeDouble(value:number) {
 		if (this.resizable) {
-			const buffer = Buffer.alloc(8);
+			const buffer = getBufferClass().alloc(8);
 			buffer.writeDoubleLE(value);
 			this.writeBuffer(buffer);
 		} else {
