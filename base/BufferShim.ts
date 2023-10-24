@@ -379,11 +379,9 @@ class BrowserBuffer {
 
 export function getBufferClass() : BufferConstructor {
 	if (typeof(Buffer) === "undefined") {
-		console.log("Using BrowserBuffer implementation.");
 		// @ts-ignore
 		return BrowserBuffer;
 	} else {
-		console.log("Using native Buffer implementation.");
 		return Buffer;
 	}
 }
