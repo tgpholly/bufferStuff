@@ -1,4 +1,5 @@
 .github/*
+base/*
 enums/*
 index.ts
 combined.ts
