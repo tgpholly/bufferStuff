@@ -14,6 +14,14 @@ export class WriterBase {
 		this.resizable = size === 0;
 	}
 
+	public get writeOffset() {
+		return this.offset;
+	}
+
+	public get length() {
+		return this.buffer.length;
+	}
+
 	public toBuffer() {
 		return this.buffer;
 	}
