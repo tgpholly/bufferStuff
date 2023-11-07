@@ -10,6 +10,10 @@ export class ReaderBase {
 		this.offset = 0;
 	}
 
+	public get readOffset() {
+		return this.offset;
+	}
+
 	public readBuffer(bytes:number) {
 		const value = this.buffer.subarray(this.offset, this.offset + bytes);
 		this.offset += bytes;
