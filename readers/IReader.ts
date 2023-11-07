@@ -2,6 +2,8 @@
 // Check LICENSE in repository root for more information.
 
 export interface IReader {
+	readOffset: number,
+	length: number,
 	readBuffer(bytes:number): Buffer,
 	readUint8Array(bytes:number): Uint8Array,
 	readByte(): number,

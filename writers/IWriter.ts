@@ -2,6 +2,8 @@
 // Check LICENSE in repository root for more information.
 
 export interface IWriter {
+	writeOffset: number,
+	length: number,
 	toBuffer(): Buffer,
 	toString(): string,
 	writeBuffer(buffer:Buffer): IWriter,
