@@ -50,4 +50,25 @@ export class ReaderBase {
 	public readBool() {
 		return Boolean(this.readUByte());
 	}
+
+	public readShortString() {
+		const length = this.readUByte();
+		let text = "";
+
+		for (let i = 0; i < length; i++) {
+			text += String.fromCharCode(this.readUByte());
+		}
+
+		return text;
+	}
+
+	public readBytesAsString(bytesToRead:number) {
+		let text = "";
+
+		for (let i = 0; i < bytesToRead; i++) {
+			text += String.fromCharCode(this.readUByte());
+		}
+
+		return text;
+	}
 }

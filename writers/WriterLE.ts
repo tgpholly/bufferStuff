@@ -146,4 +146,19 @@ export class WriterLE extends WriterBase implements IWriter {
 
 		return this;
 	}
+
+	public writeStringAsShorts(text:string) {
+		let buffer:Buffer;
+		if (this.resizable) {
+			buffer = getBufferClass().alloc(text.length * 2);
+		} else {
+			buffer = this.buffer;
+		}
+
+		for (let i = 0; i < text.length; i++) {
+			buffer.writeUint16LE(text.charCodeAt(i), i);
+		}
+
+		return this;
+	}
 }

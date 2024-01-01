@@ -53,20 +53,9 @@ export class ReaderBE extends ReaderBase implements IReader {
 		return value;
 	}
 
-	public readShortString() {
-		const length = this.readUByte();
-		let text:string = "";
-
-		for (let i = 0; i < length; i++) {
-			text += String.fromCharCode(this.readUByte());
-		}
-
-		return text;
-	}
-
 	public readString() {
 		const length = this.readUShort();
-		let text:string = "";
+		let text = "";
 
 		for (let i = 0; i < length; i++) {
 			text += String.fromCharCode(this.readUByte());
@@ -77,9 +66,19 @@ export class ReaderBE extends ReaderBase implements IReader {
 
 	public readString16() {
 		const length = this.readUShort();
-		let text:string = "";
+		let text = "";
 
 		for (let i = 0; i < length; i++) {
+			text += String.fromCharCode(this.readUShort());
+		}
+
+		return text;
+	}
+
+	public readShortsAsString(shortsToRead:number) {
+		let text = "";
+
+		for (let i = 0; i < shortsToRead; i++) {
 			text += String.fromCharCode(this.readUShort());
 		}
 

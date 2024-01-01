@@ -11,15 +11,17 @@ export interface IWriter {
 	writeByte(value:number): IWriter,
 	writeUByte(value:number): IWriter,
 	writeBool(value:boolean|number): IWriter,
+	writeStringAsBytes(text:string): IWriter,
 	writeShort(value:number): IWriter,
 	writeUShort(value:number): IWriter,
 	writeInt(value:number): IWriter,
 	writeUInt(value:number): IWriter,
 	writeLong(value:number|bigint): IWriter,
-	writeULong(value:number): IWriter,
+	writeULong(value:number|bigint): IWriter,
 	writeFloat(value:number): IWriter,
 	writeDouble(value:number): IWriter,
 	writeShortString(text:string): IWriter,
 	writeString(text:string): IWriter,
 	writeString16(text:string): IWriter,
+	writeStringAsShorts(text:string): IWriter
 }

@@ -76,4 +76,19 @@ export class WriterBase {
 
 		return this;
 	}
+
+	public writeStringAsBytes(text:string) {
+		let buffer;
+		if (this.resizable) {
+			buffer = getBufferClass().alloc(text.length);
+		} else {
+			buffer = this.buffer;
+		}
+
+		for (let i = 0; i < text.length; i++) {
+			buffer.writeUInt8(text.charCodeAt(i), i);
+		}
+
+		return this;
+	}
 }

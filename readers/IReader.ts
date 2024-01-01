@@ -9,6 +9,8 @@ export interface IReader {
 	readByte(): number,
 	readUByte(): number,
 	readBool(): boolean,
+	readShortString(): string,
+	readBytesAsString(bytesToRead:number): string,
 	readShort(): number,
 	readUShort(): number,
 	readInt(): number,
@@ -17,7 +19,7 @@ export interface IReader {
 	readULong(): bigint,
 	readFloat(): number,
 	readDouble(): number,
-	readShortString(): string,
 	readString(): string,
+	readShortsAsString(shortsToRead:number): string,
 	readString16(): string,
 }
