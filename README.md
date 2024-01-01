@@ -22,11 +22,11 @@ I tried to keep it as simple as possible to use, for example if you want to writ
 writer.writeByte(<number>);
 ```
 
-You can find a list of all of the methods for [Writers](https://github.com/tgpholly/bufferStuff/blob/master/writers/IWriter.ts) and [Readers](https://github.com/tgpholly/bufferStuff/blob/master/readers/IReader.ts) in their interface files.
+You can find a list of all of the methods for [Writers](https://git.eusv.net/tgpholly/bufferStuff/src/branch/master/writers/IWriter.ts) and [Readers](https://git.eusv.net/tgpholly/bufferStuff/src/branch/master/readers/IReader.ts) in their interface files.
 
 ## Projects using bufferStuff
 If your project uses bufferStuff feel free to make a PR to add it to this list!
-### [tgpholly/mc-beta-server](https://github.com/tgpholly/mc-beta-server)
+### [tgpholly/mc-beta-server](https://git.eusv.net/tgpholly/mc-beta-server)
 ### [tgpholly/ultrakillMP_server](https://github.com/tgpholly/ultrakillMP_server)
 
 ## Projects similar to bufferStuff
