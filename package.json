@@ -20,7 +20,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://git.eusv.net/tgpholly/bufferStuff.git"
+		"url": "https://git.eusv.net/tgpholly/bufferStuff.git"
 	},
 	"keywords": [],
 	"author": "tgpholly",
