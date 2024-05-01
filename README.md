@@ -28,6 +28,7 @@ You can find a list of all of the methods for [Writers](https://git.eusv.net/tgp
 If your project uses bufferStuff feel free to make a PR to add it to this list!
 ### [tgpholly/mc-beta-server](https://git.eusv.net/tgpholly/mc-beta-server)
 ### [tgpholly/ultrakillMP_server](https://github.com/tgpholly/ultrakillMP_server)
+### [tgpholly/t00-multiuser](https://git.eusv.net/tgpholly/t00-multiuser)
 
 ## Projects similar to bufferStuff
 ### [tgpholly/csharp-extensions/BinaryTools](https://github.com/tgpholly/csharp-extensions/tree/master/BinaryTools) - Basically bufferStuff but for C#
