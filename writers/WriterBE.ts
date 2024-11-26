@@ -174,17 +174,20 @@ export class WriterBE extends WriterBase implements IWriter {
 	}
 
 	public writeJavaUTF(text: string) {
-		this.writeUShort(text.length);
+		const dataWriter = new WriterBE();
 
 		for (let i = 0; i < text.length; i++) {
 			const val = text.charCodeAt(i);
 			if (val === 0) {
-				this.writeByte(0xC0);
-				this.writeByte(0X80);
+				dataWriter.writeByte(0xC0);
+				dataWriter.writeByte(0X80);
 			} else {
-				this.writeByte(val);
+				dataWriter.writeByte(val);
 			}
 		}
+
+		this.writeUShort(text.length);
+		this.writeBuffer(dataWriter.toBuffer());
 
 		return this;
 	}

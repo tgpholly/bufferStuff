@@ -32,6 +32,7 @@ export class WriterBase {
 
 	public writeBuffer(buffer:Buffer) {
 		this.buffer = getBufferClass().concat([this.buffer, buffer], this.buffer.length + buffer.length);
+		this.offset += buffer.length;
 
 		return this;
 	}
