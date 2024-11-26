@@ -20,8 +20,12 @@ export interface IWriter {
 	writeULong(value:number|bigint): IWriter,
 	writeFloat(value:number): IWriter,
 	writeDouble(value:number): IWriter,
+	writeUShortString(text:string): IWriter,
 	writeShortString(text:string): IWriter,
+	writeUString(text:string): IWriter,
 	writeString(text:string): IWriter,
+	writeUString16(text:string): IWriter,
 	writeString16(text:string): IWriter,
-	writeStringAsShorts(text:string): IWriter
+	writeStringAsShorts(text:string): IWriter,
+	writeJavaUTF(text:string): IWriter
 }

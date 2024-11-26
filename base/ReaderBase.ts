@@ -51,12 +51,23 @@ export class ReaderBase {
 		return Boolean(this.readUByte());
 	}
 
-	public readShortString() {
+	public readUShortString() {
 		const length = this.readUByte();
 		let text = "";
 
 		for (let i = 0; i < length; i++) {
 			text += String.fromCharCode(this.readUByte());
+		}
+
+		return text;
+	}
+
+	public readShortString() {
+		const length = this.readByte();
+		let text = "";
+
+		for (let i = 0; i < length; i++) {
+			text += String.fromCharCode(this.readByte());
 		}
 
 		return text;

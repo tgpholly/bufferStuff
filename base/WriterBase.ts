@@ -91,4 +91,24 @@ export class WriterBase {
 
 		return this;
 	}
+
+	public writeUShortString(text:string) {
+		this.writeUByte(text.length);
+
+		for (let i = 0; i < text.length; i++) {
+			this.writeUByte(text.charCodeAt(i));
+		}
+
+		return this;
+	}
+
+	public writeShortString(text:string) {
+		this.writeByte(text.length);
+
+		for (let i = 0; i < text.length; i++) {
+			this.writeByte(text.charCodeAt(i));
+		}
+
+		return this;
+	}
 }

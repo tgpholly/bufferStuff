@@ -84,7 +84,7 @@ export class WriterLE extends WriterBase implements IWriter {
 			buffer.writeBigUint64LE(value);
 			this.writeBuffer(buffer);
 		} else {
-			this.buffer.writeBigUint64LE(value, this.offset);
+			this.buffer.writeBigUInt64LE(value, this.offset);
 			this.offset += 8;
 		}
 
@@ -117,8 +117,8 @@ export class WriterLE extends WriterBase implements IWriter {
 		return this;
 	}
 
-	public writeShortString(text:string) {
-		this.writeUByte(text.length);
+	public writeUString(text:string) {
+		this.writeUShort(text.length);
 
 		for (let i = 0; i < text.length; i++) {
 			this.writeUByte(text.charCodeAt(i));
@@ -128,20 +128,30 @@ export class WriterLE extends WriterBase implements IWriter {
 	}
 
 	public writeString(text:string) {
+		this.writeShort(text.length);
+
+		for (let i = 0; i < text.length; i++) {
+			this.writeByte(text.charCodeAt(i));
+		}
+
+		return this;
+	}
+
+	public writeUString16(text:string) {
 		this.writeUShort(text.length);
 
 		for (let i = 0; i < text.length; i++) {
-			this.writeUByte(text.charCodeAt(i));
+			this.writeUShort(text.charCodeAt(i));
 		}
 
 		return this;
 	}
 
 	public writeString16(text:string) {
-		this.writeUShort(text.length);
+		this.writeShort(text.length);
 
 		for (let i = 0; i < text.length; i++) {
-			this.writeUShort(text.charCodeAt(i));
+			this.writeShort(text.charCodeAt(i));
 		}
 
 		return this;
@@ -156,8 +166,14 @@ export class WriterLE extends WriterBase implements IWriter {
 		}
 
 		for (let i = 0; i < text.length; i++) {
-			buffer.writeUint16LE(text.charCodeAt(i), i);
+			buffer.writeUInt16LE(text.charCodeAt(i), i);
 		}
+
+		return this;
+	}
+
+	public writeJavaUTF(text: string) {
+		throw "Not implemented in Little-Endian Writer";
 
 		return this;
 	}

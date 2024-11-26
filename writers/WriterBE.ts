@@ -85,7 +85,7 @@ export class WriterBE extends WriterBase implements IWriter {
 			buffer.writeBigUint64BE(value);
 			this.writeBuffer(buffer);
 		} else {
-			this.buffer.writeBigUint64BE(value, this.offset);
+			this.buffer.writeBigUInt64BE(value, this.offset);
 			this.offset += 8;
 		}
 
@@ -118,8 +118,8 @@ export class WriterBE extends WriterBase implements IWriter {
 		return this;
 	}
 
-	public writeShortString(text:string) {
-		this.writeUByte(text.length);
+	public writeUString(text:string) {
+		this.writeUShort(text.length);
 
 		for (let i = 0; i < text.length; i++) {
 			this.writeUByte(text.charCodeAt(i));
@@ -129,20 +129,30 @@ export class WriterBE extends WriterBase implements IWriter {
 	}
 
 	public writeString(text:string) {
+		this.writeShort(text.length);
+
+		for (let i = 0; i < text.length; i++) {
+			this.writeByte(text.charCodeAt(i));
+		}
+
+		return this;
+	}
+
+	public writeUString16(text:string) {
 		this.writeUShort(text.length);
 
 		for (let i = 0; i < text.length; i++) {
-			this.writeUByte(text.charCodeAt(i));
+			this.writeUShort(text.charCodeAt(i));
 		}
 
 		return this;
 	}
 
 	public writeString16(text:string) {
-		this.writeUShort(text.length);
+		this.writeShort(text.length);
 
 		for (let i = 0; i < text.length; i++) {
-			this.writeUShort(text.charCodeAt(i));
+			this.writeShort(text.charCodeAt(i));
 		}
 
 		return this;
@@ -157,7 +167,23 @@ export class WriterBE extends WriterBase implements IWriter {
 		}
 
 		for (let i = 0; i < text.length; i++) {
-			buffer.writeUint16BE(text.charCodeAt(i), i);
+			buffer.writeUInt16BE(text.charCodeAt(i), i);
+		}
+
+		return this;
+	}
+
+	public writeJavaUTF(text: string) {
+		this.writeUShort(text.length);
+
+		for (let i = 0; i < text.length; i++) {
+			const val = text.charCodeAt(i);
+			if (val === 0) {
+				this.writeByte(0xC0);
+				this.writeByte(0X80);
+			} else {
+				this.writeByte(val);
+			}
 		}
 
 		return this;

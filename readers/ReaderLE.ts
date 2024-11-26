@@ -36,7 +36,7 @@ export class ReaderLE extends ReaderBase implements IReader {
 	}
 
 	public readULong() {
-		const value = this.buffer.readBigUint64LE(this.offset);
+		const value = this.buffer.readBigUInt64LE(this.offset);
 		this.offset += 8;
 		return value;
 	}
@@ -53,7 +53,7 @@ export class ReaderLE extends ReaderBase implements IReader {
 		return value;
 	}
 
-	public readString() {
+	public readUString() {
 		const length = this.readUShort();
 		let text:string = "";
 
@@ -63,13 +63,35 @@ export class ReaderLE extends ReaderBase implements IReader {
 
 		return text;
 	}
+
+	public readString() {
+		const length = this.readShort();
+		let text:string = "";
+
+		for (let i = 0; i < length; i++) {
+			text += String.fromCharCode(this.readByte());
+		}
+
+		return text;
+	}
 	
-	public readString16() {
+	public readUString16() {
 		const length = this.readUShort();
 		let text:string = "";
 
 		for (let i = 0; i < length; i++) {
 			text += String.fromCharCode(this.readUShort());
+		}
+
+		return text;
+	}
+
+	public readString16() {
+		const length = this.readShort();
+		let text:string = "";
+
+		for (let i = 0; i < length; i++) {
+			text += String.fromCharCode(this.readShort());
 		}
 
 		return text;
