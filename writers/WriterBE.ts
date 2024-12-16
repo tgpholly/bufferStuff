@@ -173,6 +173,8 @@ export class WriterBE extends WriterBase implements IWriter {
 		return this;
 	}
 
+	// ! TODO: Implement this properly. This was a quick, hacky implementation for mc-beta-server
+	// !       as it is used in one single place in the whole game's protocol.
 	public writeJavaUTF(text: string) {
 		const dataWriter = new WriterBE();
 

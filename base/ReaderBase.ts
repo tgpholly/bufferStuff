@@ -82,4 +82,26 @@ export class ReaderBase {
 
 		return text;
 	}
+
+	public readVarint() {
+		let total = 0;
+		let shift = 0;
+		let byte = this.readUByte();
+
+		if (!(byte & 0x80)) {
+			return (byte & 0x7F);
+		} else {
+			let end = false;
+			while (!end) {
+				if (shift) {
+					byte = this.readUByte();
+				}
+				total |= ((byte & 0x7F) << shift);
+				end = !(byte & 0x80);
+				shift += 7;
+			}
+		}
+
+		return total;
+	}
 }

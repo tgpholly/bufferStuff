@@ -112,4 +112,17 @@ export class WriterBase {
 
 		return this;
 	}
+
+	public writeVarint(value: number) {
+		let temp: number;
+		while (value > 0) {
+			temp = value & 0x7F;
+			if (!!(value >>= 7)) {
+				temp |= 0xB4;
+			}
+			this.writeUByte(temp);
+		}
+
+		return this;
+	}
 }

@@ -12,6 +12,7 @@ export interface IReader {
 	readUShortString(): string,
 	readShortString(): string,
 	readBytesAsString(bytesToRead:number): string,
+	readVarint(): number,
 	readShort(): number,
 	readUShort(): number,
 	readInt(): number,
@@ -25,4 +26,6 @@ export interface IReader {
 	readShortsAsString(shortsToRead:number): string,
 	readUString16(): string,
 	readString16(): string,
+	readArbInt(length: number): number,
+	readArbUInt(length: number): number,
 }

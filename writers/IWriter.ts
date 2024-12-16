@@ -12,6 +12,7 @@ export interface IWriter {
 	writeUByte(value:number): IWriter,
 	writeBool(value:boolean|number): IWriter,
 	writeStringAsBytes(text:string): IWriter,
+	writeVarint(value: number): IWriter,
 	writeShort(value:number): IWriter,
 	writeUShort(value:number): IWriter,
 	writeInt(value:number): IWriter,

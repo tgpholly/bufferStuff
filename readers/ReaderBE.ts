@@ -106,4 +106,16 @@ export class ReaderBE extends ReaderBase implements IReader {
 
 		return text;
 	}
+
+	public readArbInt(length: number) {
+		const value = this.buffer.readIntBE(this.offset, length);
+		this.offset += length;
+		return value;
+	}
+
+	public readArbUInt(length: number) {
+		const value = this.buffer.readUIntBE(this.offset, length);
+		this.offset += length;
+		return value;
+	}
 }
