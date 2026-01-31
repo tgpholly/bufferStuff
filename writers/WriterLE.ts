@@ -198,4 +198,25 @@ export default class WriterLE extends WriterBase implements IWriter {
 
 		return this;
 	}
+
+	public writeCString(value: string) {
+		let buffer: Buffer;
+		if (this.resizable) {
+			buffer = getBufferClass().alloc(value.length);
+		} else {
+			buffer = this.buffer;
+		}
+
+		for (let i = 0; i < value.length; i++) {
+			buffer.writeUInt8(value.charCodeAt(i), i);
+		}
+
+		if (this.resizable) {
+			this.writeBuffer(buffer);
+		}
+
+		this.writeUByte(0) // null
+
+		return this;
+	}
 }

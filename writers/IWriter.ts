@@ -1,6 +1,9 @@
 // Copyright (c) Holly Stubbs (tgpholly) - Licensed under MIT
 // Check LICENSE in repository root for more information.
 
+import Vec2 from "../base/Vec2";
+import Vec3 from "../base/Vec3";
+
 export default interface IWriter {
 	writeOffset: number,
 	length: number,
@@ -28,5 +31,8 @@ export default interface IWriter {
 	writeUString16(text:string): IWriter,
 	writeString16(text:string): IWriter,
 	writeStringAsShorts(text:string): IWriter,
-	writeJavaUTF(text:string): IWriter
+	writeJavaUTF(text:string): IWriter,
+	writeVec2(vec2: Vec2): IWriter,
+	writeVec3(vec2: Vec3): IWriter,
+	writeCString(value: string): IWriter
 }
