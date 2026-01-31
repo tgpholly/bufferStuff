@@ -41,6 +41,10 @@ const unExport = [
 	"class:WriterBase",
 	"class:WriterLE",
 	"class:WriterBE",
+	"class:Vec2",
+	"class:Vec3",
+	"interface:IReader",
+	"interface:IWriter"
 ];
 
 function checkForMatchAndReplace(s:string) {
@@ -49,6 +53,9 @@ function checkForMatchAndReplace(s:string) {
 		const type = spl[0];
 		if (s.startsWith(`export ${type} ${spl[1]}`)) {
 			return s.replace(`export ${type} ${spl[1]}`, `${type} ${spl[1]}`);
+		}
+		if (s.startsWith(`export default ${type} ${spl[1]}`)) {
+			return s.replace(`export default ${type} ${spl[1]}`, `${type} ${spl[1]}`);
 		}
 	}
 
@@ -63,11 +70,12 @@ for (const line of splitLines) {
 		continue;
 	}
 	// Fix up classes, interfaces and such.
-	if (process.argv[2] === "forweb") {
-		resultLines.push(line.replace("export class", "class").replace("export function", "function").replace("export enum", "enum").replace("export interface", "interface"));
-	} else {
-		resultLines.push(checkForMatchAndReplace(line));
-	}
+	resultLines.push(checkForMatchAndReplace(line));
+	// if (process.argv[2] === "forweb") {
+	// 	resultLines.push(line.replace("export default class", "class").replace("export default interface", "interface").replace("export default function", "function").replace("export class", "class").replace("export function", "function").replace("export enum", "enum").replace("export interface", "interface"));
+	// } else {
+	// 	resultLines.push(checkForMatchAndReplace(line));
+	// }
 }
 
 writeFileSync("./combined.ts", resultLines.join("\n"));

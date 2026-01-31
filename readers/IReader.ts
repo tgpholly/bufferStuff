@@ -1,7 +1,10 @@
 // Copyright (c) Holly Stubbs (tgpholly) - Licensed under MIT
 // Check LICENSE in repository root for more information.
 
-export interface IReader {
+import Vec2 from "../base/Vec2";
+import Vec3 from "../base/Vec3";
+
+export default interface IReader {
 	readOffset: number,
 	length: number,
 	readBuffer(bytes:number): Buffer,
@@ -22,4 +25,7 @@ export interface IReader {
 	readString(): string,
 	readShortsAsString(shortsToRead:number): string,
 	readString16(): string,
+	readVec2(): Vec2,
+	readVec3(): Vec3,
+	readCString(): string
 }

@@ -1,22 +1,24 @@
 {
 	"name": "bufferstuff",
-	"version": "1.5.0",
+	"version": "1.6.0",
 	"description": "A set of utility classes for reading and writing binary data in NodeJS and the browser",
 	"main": "./lib/index.js",
 	"types": "./lib/index.d.ts",
 	"scripts": {
-		"updateCheck": "check-outdated",
 		"_clean": "tsc --build --clean",
-
 		"build": "npm-run-all build:*",
-		"build:smash": "ts-node ./tooling/fileSmasher.ts",
+		"build:rm": "rm -f combined.ts",
+		"build:rm2": "rm -rf ./lib*",
+		"build:smash": "tsx ./tooling/fileSmasher.ts",
 		"build:build": "tsc --build",
-		"build:cleanup": "ts-node ./tooling/cleanup.ts",
-
+		"build:cleanup": "tsx ./tooling/cleanup.ts",
 		"buildweb": "npm-run-all buildweb:*",
-		"buildweb:smash": "ts-node ./tooling/fileSmasher.ts forweb",
+		"buildweb:rm": "rm -f combined.ts",
+		"buildweb:rm2": "rm -rf ./lib*",
+		"buildweb:smash": "tsx ./tooling/fileSmasher.ts forweb",
 		"buildweb:build": "tsc --build",
-		"buildweb:cleanup": "ts-node ./tooling/cleanup.ts"
+		"buildweb:cleanup": "tsx ./tooling/cleanup.ts",
+		"buildweb:webfix": "tsx ./tooling/webFix.ts"
 	},
 	"repository": {
 		"type": "git",
@@ -25,15 +27,16 @@
 	"keywords": [],
 	"author": "tgpholly",
 	"license": "MIT",
+	"type": "commonjs",
 	"bugs": {
 		"url": "https://git.eusv.net/tgpholly/bufferStuff/issues"
 	},
 	"homepage": "https://git.eusv.net/tgpholly/bufferStuff#readme",
 	"devDependencies": {
-		"check-outdated": "^2.12.0",
+		"@types/node": "^25.1.0",
 		"npm-run-all": "^4.1.5",
-		"terser": "^5.26.0",
-		"ts-node": "^10.9.2",
-		"typescript": "^5.3.3"
+		"terser": "^5.46.0",
+		"tsx": "^4.21.0",
+		"typescript": "^5.9.3"
 	}
 }

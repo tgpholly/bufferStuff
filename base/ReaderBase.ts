@@ -1,11 +1,11 @@
 // Copyright (c) Holly Stubbs (tgpholly) - Licensed under MIT
 // Check LICENSE in repository root for more information.
 
-export class ReaderBase {
-	public buffer:Buffer;
-	public offset:number;
+export default class ReaderBase {
+	public buffer: Buffer;
+	public offset: number;
 
-	public constructor(buffer:Buffer) {
+	public constructor(buffer: Buffer) {
 		this.buffer = buffer;
 		this.offset = 0;
 	}
@@ -25,7 +25,7 @@ export class ReaderBase {
 	}
 
 	// NOTE: This has to be a copy as the subarray is only cropped & offset
-	//		 Realistically this is what we want anyway.
+	//		 Realistically, this is what we want anyway.
 	public readUint8Array(bytes:number) {
 		const croppedBuffer = this.readBuffer(bytes);
 		const newArray = new Uint8Array(croppedBuffer.length);

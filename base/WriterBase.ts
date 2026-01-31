@@ -1,9 +1,9 @@
 // Copyright (c) Holly Stubbs (tgpholly) - Licensed under MIT
 // Check LICENSE in repository root for more information.
 
-import { getBufferClass } from "./BufferShim";
+import getBufferClass from "./BufferShim";
 
-export class WriterBase {
+export default class WriterBase {
 	public buffer:Buffer;
 	public offset:number;
 	public readonly resizable:boolean;

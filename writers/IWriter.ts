@@ -1,7 +1,10 @@
 // Copyright (c) Holly Stubbs (tgpholly) - Licensed under MIT
 // Check LICENSE in repository root for more information.
 
-export interface IWriter {
+import Vec2 from "../base/Vec2";
+import Vec3 from "../base/Vec3";
+
+export default interface IWriter {
 	writeOffset: number,
 	length: number,
 	toBuffer(): Buffer,
@@ -23,5 +26,8 @@ export interface IWriter {
 	writeShortString(text:string): IWriter,
 	writeString(text:string): IWriter,
 	writeString16(text:string): IWriter,
-	writeStringAsShorts(text:string): IWriter
+	writeStringAsShorts(text:string): IWriter,
+	writeVec2(vec:Vec2): IWriter,
+	writeVec3(vec:Vec3): IWriter,
+	writeCString(text:string): IWriter
 }
