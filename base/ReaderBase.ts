@@ -1,7 +1,7 @@
 // Copyright (c) Holly Stubbs (tgpholly) - Licensed under MIT
 // Check LICENSE in repository root for more information.
 
-export class ReaderBase {
+export default class ReaderBase {
 	public buffer:Buffer;
 	public offset:number;
 

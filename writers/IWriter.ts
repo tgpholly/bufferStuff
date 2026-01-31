@@ -1,7 +1,7 @@
 // Copyright (c) Holly Stubbs (tgpholly) - Licensed under MIT
 // Check LICENSE in repository root for more information.
 
-export interface IWriter {
+export default interface IWriter {
 	writeOffset: number,
 	length: number,
 	toBuffer(): Buffer,

@@ -8,10 +8,11 @@ class BrowserBuffer {
 	public buffer:Uint8Array;
 	private dataView:DataView;
 
-	public constructor(dataOrSize: Array<number> | ArrayBufferLike | number) {
+	public constructor(dataOrSize: Array<number> | ArrayBufferLike | number | Uint8Array) {
 		if (typeof(dataOrSize) === "number") {
 			this.buffer = new Uint8Array(dataOrSize);
 		} else if (typeof(dataOrSize) === "object") {
+			// @ts-ignore it'll be fine, trust.
 			this.buffer = new Uint8Array(dataOrSize); // Convert whatever comes in to a Uint8Array.
 		} else {
 			this.buffer = new Uint8Array(0); // Fallback
@@ -377,7 +378,7 @@ class BrowserBuffer {
 	}
 }
 
-export function getBufferClass() : BufferConstructor {
+export default function getBufferClass() : BufferConstructor {
 	if (typeof(Buffer) === "undefined") {
 		// @ts-ignore
 		return BrowserBuffer;

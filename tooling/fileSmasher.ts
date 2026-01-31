@@ -8,6 +8,7 @@
 import { readdirSync, lstatSync, readFileSync, writeFileSync } from "fs";
 
 const tsFileData:Array<string> = new Array<string>();
+let smashedFiles = 0;
 
 // Github Actions forced my hand
 const toolinglessFolderPath = __dirname.replace("/tooling", "/");
@@ -18,11 +19,12 @@ function readDir(nam:string) {
 		if (nam == toolinglessFolderPath && (file.startsWith(".") || file == "tooling" || file == "lib" || file == "node_modules" || file == "combined.ts")) {
 			continue;
 		}
-		
+
 		if (lstatSync(`${nam}/${file}`).isDirectory()) {
 			readDir(`${nam}/${file}`);
 		} else if (file.endsWith(".ts")) {
 			tsFileData.push(readFileSync((`${nam}/${file}`).replace("//", "/")).toString());
+			smashedFiles++;
 		}
 	}
 }
@@ -41,6 +43,8 @@ const unExport = [
 	"class:WriterBase",
 	"class:WriterLE",
 	"class:WriterBE",
+	"interface:IReader",
+	"interface:IWriter"
 ];
 
 function checkForMatchAndReplace(s:string) {
@@ -48,11 +52,14 @@ function checkForMatchAndReplace(s:string) {
 		const spl = tUExp.split(":");
 		const type = spl[0];
 		if (s.startsWith(`export ${type} ${spl[1]}`)) {
-			return s.replace(`export ${type} ${spl[1]}`, `${type} ${spl[1]}`);
+			return s.replace(`export ${type} ${spl[1]}`, `${type} ${spl[1]}`).replace("export default", "export");
+		}
+		if (s.startsWith(`export default ${type} ${spl[1]}`)) {
+			return s.replace(`export default ${type} ${spl[1]}`, `${type} ${spl[1]}`).replace("export default", "export");
 		}
 	}
 
-	return s;
+	return s.replace("export default", "export");
 }
 
 // Let's process the file to make it usable
@@ -63,11 +70,8 @@ for (const line of splitLines) {
 		continue;
 	}
 	// Fix up classes, interfaces and such.
-	if (process.argv[2] === "forweb") {
-		resultLines.push(line.replace("export class", "class").replace("export function", "function").replace("export enum", "enum").replace("export interface", "interface"));
-	} else {
-		resultLines.push(checkForMatchAndReplace(line));
-	}
+	resultLines.push(checkForMatchAndReplace(line));
 }
 
 writeFileSync("./combined.ts", resultLines.join("\n"));
+console.log(`Success! Smashed ${smashedFiles} files.`);

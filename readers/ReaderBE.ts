@@ -1,10 +1,12 @@
 // Copyright (c) Holly Stubbs (tgpholly) - Licensed under MIT
 // Check LICENSE in repository root for more information.
 
-import { IReader } from "./IReader";
-import { ReaderBase } from "../base/ReaderBase";
+import IReader from "./IReader";
+import ReaderBase from "../base/ReaderBase";
+import Vec2 from "../base/Vec2";
+import Vec3 from "../base/Vec3";
 
-export class ReaderBE extends ReaderBase implements IReader {
+export default class ReaderBE extends ReaderBase implements IReader {
 	public readShort() {
 		const value = this.buffer.readInt16BE(this.offset);
 		this.offset += 2
@@ -117,5 +119,35 @@ export class ReaderBE extends ReaderBase implements IReader {
 		const value = this.buffer.readUIntBE(this.offset, length);
 		this.offset += length;
 		return value;
+	}
+
+
+	public readVec2() {
+		const x = this.readFloat();
+		const y = this.readFloat();
+
+		return new Vec2(x, y);
+	}
+
+	public readVec3() {
+		const x = this.readFloat();
+		const y = this.readFloat();
+		const z = this.readFloat();
+
+		return new Vec3(x, y, z);
+	}
+
+	public readCString() {
+		let textCharacters = "";
+
+		while(true) {
+			const byte = this.readUByte();
+			if (byte == 0) {
+				break;
+			}
+			textCharacters += String.fromCharCode(byte);
+		}
+
+		return textCharacters;
 	}
 }

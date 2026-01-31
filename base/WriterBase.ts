@@ -1,9 +1,9 @@
 // Copyright (c) Holly Stubbs (tgpholly) - Licensed under MIT
 // Check LICENSE in repository root for more information.
 
-import { getBufferClass } from "./BufferShim";
+import getBufferClass from "./BufferShim";
 
-export class WriterBase {
+export default class WriterBase {
 	public buffer:Buffer;
 	public offset:number;
 	public readonly resizable:boolean;
@@ -122,6 +122,27 @@ export class WriterBase {
 			}
 			this.writeUByte(temp);
 		}
+
+		return this;
+	}
+
+	public writeCString(value: string) {
+		let buffer: Buffer;
+		if (this.resizable) {
+			buffer = getBufferClass().alloc(value.length);
+		} else {
+			buffer = this.buffer;
+		}
+
+		for (let i = 0; i < value.length; i++) {
+			buffer.writeUInt8(value.charCodeAt(i), i);
+		}
+
+		if (this.resizable) {
+			this.writeBuffer(buffer);
+		}
+
+		this.writeUByte(0) // null
 
 		return this;
 	}

@@ -1,11 +1,13 @@
 // Copyright (c) Holly Stubbs (tgpholly) - Licensed under MIT
 // Check LICENSE in repository root for more information.
 
-import { IWriter } from "./IWriter";
-import { WriterBase } from "../base/WriterBase";
-import { getBufferClass } from "../base/BufferShim";
+import IWriter from "./IWriter";
+import WriterBase from "../base/WriterBase";
+import getBufferClass from "../base/BufferShim";
+import Vec2 from "../base/Vec2";
+import Vec3 from "../base/Vec3";
 
-export class WriterBE extends WriterBase implements IWriter {
+export default class WriterBE extends WriterBase implements IWriter {
 	public writeShort(value:number) {
 		if (this.resizable) {
 			const buffer = getBufferClass().alloc(2);
@@ -190,6 +192,22 @@ export class WriterBE extends WriterBase implements IWriter {
 
 		this.writeUShort(text.length);
 		this.writeBuffer(dataWriter.toBuffer());
+
+		return this;
+	}
+
+
+	public writeVec2(vec2: Vec2) {
+		this.writeFloat(vec2.x);
+		this.writeFloat(vec2.y);
+
+		return this;
+	}
+
+	public writeVec3(vec3: Vec3) {
+		this.writeFloat(vec3.x);
+		this.writeFloat(vec3.y);
+		this.writeFloat(vec3.z);
 
 		return this;
 	}
