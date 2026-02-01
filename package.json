@@ -10,13 +10,13 @@
 		"build": "npm-run-all build:*",
 		"build:rm": "rm -f combined.ts",
 		"build:rm2": "rm -rf ./lib/*",
-		"build:smash": "ts-node ./tooling/fileSmasher.ts",
+		"build:smash": "tsx ./tooling/fileSmasher.ts",
 		"build:build": "tsc --build",
-		"build:cleanup": "ts-node ./tooling/cleanup.ts",
+		"build:cleanup": "tsx ./tooling/cleanup.ts",
 
 		"buildweb": "npm-run-all buildweb:*",
 		"buildweb:shared": "npm-run-all build:*",
-		"buildweb:fix": "ts-node ./tooling/webFix.ts"
+		"buildweb:fix": "tsx ./tooling/webFix.ts"
 	},
 	"repository": {
 		"type": "git",
