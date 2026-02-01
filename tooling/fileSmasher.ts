@@ -42,9 +42,7 @@ const unExport = [
 	"class:ReaderBE",
 	"class:WriterBase",
 	"class:WriterLE",
-	"class:WriterBE",
-	"interface:IReader",
-	"interface:IWriter"
+	"class:WriterBE"
 ];
 
 function checkForMatchAndReplace(s:string) {
